@@ -3,6 +3,8 @@ Deep Learning Workshop Materials
 
 # Preliminaries
 
+Lecture slides and other deep-learning info for these materials are [here](https://github.com/Phillips-Lab-MTSU/DL-Workshop/blob/main/2023-12-01%20Deep%20Learning%20Workshop%20-%20Amplify%20-%20WebVersion.pdf)
+
 You will need to use either [Docker](https://www.docker.com/) or [Apptainer](https://apptainer.org/) (linux only) to run the demos below. Make sure you have a working Docker or Apptainer installation before proceeding!
 
 Once you have a working container system, then clone the repo:
