@@ -46,3 +46,12 @@ apptainer exec --writable-tmpfs -H ${HOME}:/home/jovyan csci4850-2022-09-10-comp
 ```
 
 Open `Taxonomy Demo.ipynb` in JupyterLab and follow the instructions in the notebook.
+
+# Text-to-Image and Image-to-Text Demo
+
+Uses the same stack as the BERT/GPT demos above. However, you need to add relevant flags to ensure your GPU is accessible (and CUDA 11.8 or above is installed) to run the notebook. Should just be able to add the `--gpus all` flag to docker, but apptainer is more complicated and I use the following:
+```
+apptainer exec --nv --writable-tmpfs --env HF_HOME=${HOME}/hf_home -H jlab:${HOME} --env XLA_FLAGS="--xla_gpu_cuda_data_dir=/opt/conda/pkgs/cuda-toolkit" csci-2023-10-20.sif start-notebook.sh
+```
+
+Open `MultiModel Models.ipynb` in JupyterLab and follow the instructions in the notebook.
