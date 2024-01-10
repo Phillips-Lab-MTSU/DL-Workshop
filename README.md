@@ -19,13 +19,13 @@ Pull the software stack image and use it to create a Jupyterlab session from whi
 
 If using Docker:
 ```
-docker pull jlphillips/csci:2023-10-20
-docker run -it --rm --name jlab -m 16g -p 8888:8888 --user root -e GRANT_SUDO=yes -v ${PWD}:/home/jovyan/work jlphillips/csci:2023-10-20
+docker pull jlphillips/csci:2024-01-09
+docker run -it --rm --name jlab -m 16g -p 8888:8888 --user root -e GRANT_SUDO=yes -v ${PWD}:/home/jovyan/work jlphillips/csci:2024-01-09
 ```
 
 If using Apptainer:
 ```
-curl --remote-name https://data.phillips-lab.org/sif/csci-2023-10-20.sif
+curl --remote-name https://data.phillips-lab.org/sif/csci-2024-01-09.sif
 apptainer exec --writable-tmpfs -H ${HOME}:/home/jovyan csci-2023-09-10-compbio-p2.sif start-notebook.sh
 ```
 
@@ -53,7 +53,7 @@ Open `Taxonomy Demo.ipynb` in JupyterLab and follow the instructions in the note
 
 Uses the same stack as the BERT/GPT demos above. However, you need to add relevant flags to ensure your GPU is accessible (and CUDA 11.8 or above is installed) to run the notebook. Should just be able to add the `--gpus all` flag to docker, but apptainer is more complicated and I use the following:
 ```
-apptainer exec --nv --writable-tmpfs --env HF_HOME=${HOME}/hf_home -H jlab:${HOME} --env XLA_FLAGS="--xla_gpu_cuda_data_dir=/opt/conda/pkgs/cuda-toolkit" csci-2023-10-20.sif start-notebook.sh
+apptainer exec --nv --writable-tmpfs --env HF_HOME=${HOME}/hf_home -H jlab:${HOME} --env XLA_FLAGS="--xla_gpu_cuda_data_dir=/opt/conda/pkgs/cuda-toolkit" csci-2024-01-09.sif start-notebook.sh
 ```
 
 Open `MultiModel Models.ipynb` in JupyterLab and follow the instructions in the notebook.
