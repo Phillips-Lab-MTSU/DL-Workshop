@@ -26,10 +26,19 @@ docker run -it --rm --name jlab -m 16g -p 8888:8888 --user root -e GRANT_SUDO=ye
 If using Apptainer:
 ```
 curl --remote-name https://data.phillips-lab.org/sif/csci-2024-01-09.sif
-apptainer exec --writable-tmpfs -H ${HOME}:/home/jovyan csci-2023-09-10-compbio-p2.sif start-notebook.sh
+apptainer exec --writable-tmpfs -H ${HOME}:/home/jovyan csci-2024-01-09.sif start-notebook.sh
 ```
 
 Open `BERT Embeddings.ipynb` and/or `LLM Inference.ipynb` and follow the instructions in the notebook(s).
+
+# Text-to-Image and Image-to-Text Demo
+
+Uses the same stack as the BERT/GPT demos above. However, you need to add relevant flags to ensure your GPU is accessible (and CUDA 11.8 or above is installed) to run the notebook. Should just be able to add the `--gpus all` flag to docker, but apptainer is more complicated and I use the following:
+```
+apptainer exec --nv --writable-tmpfs --env HF_HOME=${HOME}/hf_home -H jlab:${HOME} --env XLA_FLAGS="--xla_gpu_cuda_data_dir=/opt/conda/pkgs/cuda-toolkit" csci-2024-01-09.sif start-notebook.sh
+```
+
+Open `MultiModel Models.ipynb` in JupyterLab and follow the instructions in the notebook.
 
 # Taxonomic Classification Demo
 
@@ -48,12 +57,3 @@ apptainer exec --writable-tmpfs -H ${HOME}:/home/jovyan csci4850-2022-09-10-comp
 ```
 
 Open `Taxonomy Demo.ipynb` in JupyterLab and follow the instructions in the notebook.
-
-# Text-to-Image and Image-to-Text Demo
-
-Uses the same stack as the BERT/GPT demos above. However, you need to add relevant flags to ensure your GPU is accessible (and CUDA 11.8 or above is installed) to run the notebook. Should just be able to add the `--gpus all` flag to docker, but apptainer is more complicated and I use the following:
-```
-apptainer exec --nv --writable-tmpfs --env HF_HOME=${HOME}/hf_home -H jlab:${HOME} --env XLA_FLAGS="--xla_gpu_cuda_data_dir=/opt/conda/pkgs/cuda-toolkit" csci-2024-01-09.sif start-notebook.sh
-```
-
-Open `MultiModel Models.ipynb` in JupyterLab and follow the instructions in the notebook.
