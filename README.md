@@ -38,7 +38,7 @@ Uses the same stack as the BERT/GPT demos above. However, you need to add releva
 apptainer exec --nv --writable-tmpfs --env HF_HOME=${HOME}/hf_home -H jlab:${HOME} --env XLA_FLAGS="--xla_gpu_cuda_data_dir=/opt/conda/pkgs/cuda-toolkit" csci-2024-01-09.sif start-notebook.sh
 ```
 
-Open `MultiModel Models.ipynb` in JupyterLab and follow the instructions in the notebook.
+Open `MultiModal Models.ipynb` in JupyterLab and follow the instructions in the notebook.
 
 # Taxonomic Classification Demo
 
